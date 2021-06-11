@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 use 'yarn install' to install packages.
-use 'yarn rus start' to test my app
+use 'yarn run start' to test my app
 
 ## Available Scripts
 
