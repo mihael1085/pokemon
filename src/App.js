@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom'
 import { Home } from './pages/Home'
 import { About } from './pages/About'
 import { Navbar } from './components/Navbar'
+import {Pokemon} from './components/Pokemon'
 // import axios from 'axios'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
      <Switch>
        <Route path={'/'} exact component={Home} />
        <Route path={'/about'} component={About} />
+      <Route path={'/pokemon/:pokemon'} component={Pokemon} />
        <Redirect to={"/"}/>
      </Switch>
     </div>
