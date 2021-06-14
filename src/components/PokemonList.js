@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {GetPokemonList} from '../actions/pokemonActions'
 import ReactPaginate from 'react-paginate';
 
-export const Cards = ({pokemons}) => {
+export const PokemonList = ({pokemons}) => {
 
 	const dispatch = useDispatch();
 	const pokemonList = useSelector(state => state.PokemonList)

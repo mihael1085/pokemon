@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Cards } from '../components/Cards'
+import { PokemonList } from '../components/PokemonList'
 
 
 
@@ -7,7 +7,7 @@ export const Home = () => {
 	return (
 		<Fragment>
 			<h1>Pokemon List</h1>
-			<Cards />
+			<PokemonList />
 		</Fragment>
 	)
 }
