@@ -23,7 +23,25 @@ code {
   }
 }
 
-.list-group-item {
+.list-wrapper {
+  
+  a{
+    text-decoration: none;
+  }
+}
+
+.pokemon-item {
   display: flex;
   justify-content: space-between;
+  border: 1px solid blue;
+  margin: 10px auto;
+  border-radius: 3px;
+
+}
+
+.pagination {
+  width: 500px;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
 }

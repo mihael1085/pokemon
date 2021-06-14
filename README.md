@@ -1,12 +1,34 @@
-# Getting Started with Create React App
+# Приложение "pokemon-redux" создано утилитой create-react-app и основывается на библиотеке React и менеджере состояний Redux.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Данные запрашиваются с сервера pokeapi.com
+ 
+ * Используемые модули:
+ 	* UI bootstrap v 5
+ 	* CSS препроцессор SCSS v 4.14
+ 	* библиотека React JS
+ 	* менеджер состояния приложения Redux JS
+	* middleware Redux Thunk
+> Redux Thunk это middleware библиотека, которая позволяет вам вызвать action creator, возвращая при этом функцию вместо объекта. Функция принимает метод dispatch как аргумент, чтобы после того, как асинхронная операция завершится, использовать его для диспатчинга обычного синхронного экшена, внутри тела функции.
 
-## Available Scripts
+- библиотека lodash 
+> используется метод _.isEmpty из этой библиотеки
+- react-router-dom - используется для роутинга между компонентами
+- react-paginator для пагинации списка покемонов
 
-In the project directory, you can run:
+Следить за State можно благодаря модулю redux-devtool-extension и расширения для Chrome - Redux DevTools.
+Соответсвующая вкладка появляется в Chrome в Dev Tools после утсановки расширения Redux DevTools.
 
-### `yarn start`
+
+## Как запустить приложение ?
+
+Скопируйте (склонируйте) проект на локальный диск
+### `git clone .......`
+
+Для установки необходимых пакетов запустите команду :
+### `yarn install`
+
+Для запуска приложения в тестовом режиме запустите команду:
+### `yarn run start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -14,57 +36,51 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+# Описание структуры приложения
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+В базовую сруктуру приложения входят :
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### React-компоненты (каталог ./src/components)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+/PokemonList.js - запускает функцию GetPokemonList, которая запрашивет с сервера [pokeapi](https://pokeapi.co) список покемонов и отображает этот список.
 
-### `yarn eject`
+/Pokemon.js - запускает функции, которы запрашивют с сервера [pokeapi](https://pokeapi.co) описание покемона и отображает имя и характеристики покемона.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### STATE - состояние (файл ./src/Store.js)
+В приложении есть два состояния (State):
+* PokemonList - объект, в котором хранится 
+	* loading : идет ли сейчас загрузка данных с сервера (в момент загрузки отображается компонент-заглушка Loader/)
+	* data : список покемонов в формате {name: 'name', url: 'url'}
+	* errorMsg: хранит текст ошибки (при ошибках в загрузке данных)
+ 	* count: хранит общее количество строк с покемонами (1118)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* Pokemon - объект, в котором хранится
+	* loading : идет ли сейчас загрузка данных с сервера (в момент загрузки отображается компонент-заглушка Loader/)
+	* data : список данных о покемоне в формате {name: 'namr', url: 'url'}
+	* errorMsg: хранит текст ошибки (при ошибках в загрузке данных)
+ 	* count: хранит общее количество строк с покемонами (1118)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### ACTIONS - список действий
+Так как приложение небольшое, список действий не хранится в отдельном файле, а все actions описаны в reducers
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### REDUCERS - редьюсеры (редукторы) (папка ./src/reducers)
 
-### Code Splitting
+ PokemonListReducer
+содержит кейсы types:	POKEMON_LIST_LOADING, POKEMON_LIST_FAIL, POKEMON_LIST_SUCCESS
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+PokemonReducer
+содержит кейсы types: POKEMON_MULT_LOADING, POKEMON_MULT_FAIL, POKEMON_MULT_SUCCESS
 
-### Analyzing the Bundle Size
+### ACTION CREATORS - генераторы действий (функции, вызывающие изменения состояний) (папка ./src/actons/pokemonActions)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+GetPokemonList - вызывает диспатчи (dispatch) для загрузки Списка покемонов
 
-### Making a Progressive Web App
+GetPokemon - вызывает диспатчи (dispatch) для загрузки информации о покемоне
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
