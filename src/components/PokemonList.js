@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import _ from 'lodash';
 import {Loader} from './Loader'
 import { useDispatch, useSelector } from 'react-redux'
 import {GetPokemonList} from '../actions/pokemonActions'
@@ -19,7 +18,7 @@ export const PokemonList = ({pokemons}) => {
 	}
 
 	const ShowData = () => {
-		if(!_.isEmpty(pokemonList.data)) {
+		if(pokemonList.data) {
 			return(
 				<div className="list-wrapper">
 				{ pokemonList.data.map((el, index) => {
@@ -50,7 +49,7 @@ export const PokemonList = ({pokemons}) => {
 	return (
 		<div>
 			{ShowData()}
-			{!_.isEmpty(pokemonList.data) && (
+			{(pokemonList.data) && (
 				<ReactPaginate
 					pageCount={Math.ceil(pokemonList.count / 15)}
 					pageRangeDisplayed={2}

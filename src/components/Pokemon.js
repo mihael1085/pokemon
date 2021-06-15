@@ -2,7 +2,6 @@ import React from 'react'
 import {Loader} from './Loader'
 import { useDispatch, useSelector } from 'react-redux';
 import { GetPokemon } from '../actions/pokemonActions';
-import _ from 'lodash'
 
 export const Pokemon = (props) => {
 	const pokemonName = props.match.params.pokemon
@@ -16,7 +15,7 @@ export const Pokemon = (props) => {
 	}, [])
 
 	const showData = () => {
-		if(!_.isEmpty(pokemonState.data[pokemonName])){
+		if((pokemonState.data[pokemonName])){
 			const pokeData = pokemonState.data[pokemonName]
 			return (
 				<div className="pokemon-wrapper">

@@ -4,7 +4,6 @@ import { Home } from './pages/Home'
 import { About } from './pages/About'
 import { Navbar } from './components/Navbar'
 import {Pokemon} from './components/Pokemon'
-// import axios from 'axios'
 
 function App() {
 
