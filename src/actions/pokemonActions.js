@@ -30,8 +30,6 @@ export const GetPokemonList = (page) => async dispatch => {
 // Возвращает async dispatch (асинхронный), который содержит синхронные диспатчи (загрузка данных о Покемоне в Store)
 export const GetPokemon = (pokemon) => async dispatch => {
 
-
-
     try {
         dispatch({
             type: "POKEMON_MULT_LOADING"
@@ -39,14 +37,11 @@ export const GetPokemon = (pokemon) => async dispatch => {
 
         const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
 
-
             dispatch({
                 type: "POKEMON_MULT_SUCCESS",
                 payload: res.data,
                 pokemonName: pokemon
             })
-
-
 
     } catch(e) {
         dispatch({

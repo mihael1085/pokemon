@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 export const Navbar = () => (
-	<Fragment>
+	<>
 		<nav className="navbar navbar-dark navbar-exand-lg bg-primary ">
 			<div className="navbar-brand">
 				Pokemon App
@@ -23,5 +23,5 @@ export const Navbar = () => (
 				</li>
 			</ul>
 		</nav>
-	</Fragment>
+	</>
 )

@@ -14,21 +14,21 @@ const PokemonListReducer = (state = DefaultState, action) => {
 				errorMsg: ''
 			};
 
-			case "POKEMON_LIST_FAIL": 
-				return {
-					...state,
-					loading: false,
-					errorMsg: 'error loading pokemons'
-				};
+		case "POKEMON_LIST_FAIL": 
+			return {
+				...state,
+				loading: false,
+				errorMsg: 'error loading pokemons'
+			};
 
-			case "POKEMON_LIST_SUCCESS": 
-				return {
-					...state,
-					loading: false,
-					data: action.payload.results,
-					errorMsg: '',
-					count: action.payload.count
-				};
+		case "POKEMON_LIST_SUCCESS": 
+			return {
+				...state,
+				loading: false,
+				data: action.payload.results,
+				errorMsg: '',
+				count: action.payload.count
+			};
 	
 		default: 
 			return state

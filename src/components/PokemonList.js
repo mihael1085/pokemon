@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {GetPokemonList} from '../actions/pokemonActions'
 import ReactPaginate from 'react-paginate';
 
-export const PokemonList = ({pokemons}) => {
+export const PokemonList = () => {
 
 	const dispatch = useDispatch();
 	const pokemonList = useSelector(state => state.PokemonList)
@@ -13,7 +13,7 @@ export const PokemonList = ({pokemons}) => {
 		FetchData(1)
 	}, [])
 
-	const FetchData = (page = 1) => {
+	const FetchData = (page) => {
 		dispatch(GetPokemonList(page))
 	}
 
@@ -42,7 +42,7 @@ export const PokemonList = ({pokemons}) => {
 			return <p>{pokemonList.errorMsg}</p>
 		}
 
-		return <p>enable to get data</p>
+		return <p>Unable to get data</p>
 
 		} 
 
